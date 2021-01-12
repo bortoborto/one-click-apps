@@ -18,6 +18,8 @@ services:
         image: wordpress:$$cap_wp_version
         volumes:
             - $$cap_appname-wp-data:/var/www/html
+            - ./wordpress-staging-uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+            - ./wordpress-staging-robots.txt:/var/www/html/robots.txt
         restart: always
         environment:
             WORDPRESS_DB_HOST: srv-captain--$$cap_appname-db:3306
@@ -57,7 +59,7 @@ caproverOneClickApp:
             Wordpress is deployed and available as $$cap_appname-wordpress . 
 
              IMPORTANT: It will take up to 2 minutes for WordPress to be ready. Before that, you might see a 502 error page.
-    displayName: WordPress
+    displayName: WordPress-Staging
     isOfficial: true
     description: WordPress is a content management system based on PHP and MySQL that is usually used with the MySQL or MariaDB database
     documentation: Taken from https://docs.docker.com/compose/wordpress/. Port mapping removed from WP as it is no longer needed
