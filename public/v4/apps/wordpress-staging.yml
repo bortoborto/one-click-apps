@@ -18,8 +18,8 @@ services:
         image: wordpress:$$cap_wp_version
         volumes:
             - $$cap_appname-wp-data:/var/www/html
-            - ./wordpress-staging-uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-            - ./wordpress-staging-robots.txt:/var/www/html/robots.txt
+            - ../files/wordpress-staging-uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+            - ../files/wordpress-staging-robots.txt:/var/www/html/robots.txt
         restart: always
         environment:
             WORDPRESS_DB_HOST: srv-captain--$$cap_appname-db:3306
